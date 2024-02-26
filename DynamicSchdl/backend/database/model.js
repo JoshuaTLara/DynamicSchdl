@@ -1,9 +1,11 @@
 // need my imports up here
 import { Model, DataTypes } from 'sequelize'
 import util from 'util'
-// possiblely need a function like connectToDB from './db.js'
+import connectToDB from './db.js'
 
-// need to export db = await connectToDB("postresql:///file")
+
+//this is so my sql can access my database and use it in building all the tables
+export const db = await connectToDB('postgresql:///schedule')
 
 
 //this is the User that has access to the specific dataset of the database that corolates to their inputs they have put in the past.
@@ -22,12 +24,12 @@ User.init(
             primaryKey: true,
         },
         email: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(30),
             allowNull: false,
             unique: true,
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(500),
             allowNull: false,
         }
     },
@@ -106,7 +108,6 @@ EmployeeAvailability.init(
         },
         dayOfTheWeek: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             validate: {
                 min: 1,
                 max: 7
@@ -145,6 +146,9 @@ EmployeeAvailability.init(
                 max: 7
             }
         },
+          timeStamp:{
+            type: DataTypes.INTEGER,
+          }
     },
     {
         modelName: 'shift',
@@ -167,14 +171,14 @@ EmployeeAvailability.init(
   Station.belongsToMany(Employee, {through: 'EmployeeQualification'})
 
 // linking the user to the employee table
-  User.hasMany(Employee, {foreignKey: 'user'})
-  Employee.belongsTo(User, {foreignKey: 'user'})
+  User.hasMany(Employee, {foreignKey: 'userId'})
+  Employee.belongsTo(User, {foreignKey: 'userId'})
 // linking the user to the station table 
-  User.hasMany(Station, {foreignKey: 'user'})
-  Station.belongsTo(User, {foreignKey: 'user'})
+  User.hasMany(Station, {foreignKey: 'userId'})
+  Station.belongsTo(User, {foreignKey: 'userId'})
 // linking the user to the EmployeeAvaliblilty
-  User.hasMany(EmployeeAvailability, {foreignKey: 'user'})
-  EmployeeAvailability.belongsTo(User, {foreignKey: 'user'})
+  User.hasMany(EmployeeAvailability, {foreignKey: 'userId'})
+  EmployeeAvailability.belongsTo(User, {foreignKey: 'userId'})
 // linking the user to the Shift
-  User.hasMany(Shift, {foreignKey: 'user'})
-  Shift.belongsTo(User, {foreignKey: 'user'})
+  User.hasMany(Shift, {foreignKey: 'userId'})
+  Shift.belongsTo(User, {foreignKey: 'userId'})
