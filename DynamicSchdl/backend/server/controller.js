@@ -79,5 +79,46 @@ export const handlerFunctions = {
     
     logout: async (req, res) => {
         req.session.destroy()
+
+        res.send({
+            message: "user logged out",
+            success: true
+        })
+        return
     },
+     register: async (req, res) => {
+        const { email, password } = req.body;
+      
+        // Check if the user with the provided email already exists
+        const existingUser = await User.findOne({
+          where: {
+            email: email,
+          },
+        });
+      
+        if (existingUser) {
+          res.send({
+            message: 'User already exists with this email',
+            success: false,
+          });
+          return;
+        }
+      
+        // Create a new user in the database
+        const newUser = await User.create({
+          email: email,
+          password: password,
+        });
+      
+        // Set the user as logged in 
+        req.session.userId = newUser.userId;
+      
+        res.send({
+          message: 'User registered and logged in',
+          success: true,
+          userId: newUser.userId,
+        });
+      },
+      
+    
 }

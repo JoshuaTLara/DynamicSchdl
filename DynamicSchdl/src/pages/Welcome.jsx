@@ -1,18 +1,25 @@
-import { NavLink, Outlet } from "react-router-dom";
+
 import axios from 'axios';
 import { useEffect, useState } from "react";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 export default function Welcome() {
     // To login i need a user to enter user name and password
     // keep track of them with state values
     // when form is submitted send state values to server as req.body
-
+        const navigate = useNavigate()
         const [email, setEmail] = useState('')
         const [password, setPassword] = useState('')
 
-        const [userId, setUserId] = useState(null)
+        // const [userId, setUserId] = useState(null)
+
+        // to use redux we need to subscribe (useSelector())to the dstore
+        const userId = useSelector((state) => state.userId)
+
+        const dispatch = useDispatch()
 
     // how to handle the submittion of the form? create a function form submission invokes
     const handleLogin = async (e) => {
@@ -28,12 +35,22 @@ export default function Welcome() {
         const res = await axios.post("/api/login", bodyObj)
 
         // get response and save the userId to redux store
-       if (res.data.sucess) {
+        if (res.data.success) {
+
            //what do i do with the userId that it returns to me
-           setUserId(res.data.userId)
+           // dispatch the userId to the store
+           dispatch({
+            type: "USER_AUTH",
+            payload: res.data.userId
+
+           })
+           setEmail("")
+           setPassword("")
+           navigate('/navbar')
         } 
-        alert(res.data.message)
+        // alert(res.data.message)
     }
+    
 
     // On initial render, I want this component to determine if 
     // there is a userId saved in the servers rew.session object
@@ -41,8 +58,14 @@ export default function Welcome() {
     const sessionCheck = async () => {
         const res = await axios.get("/api/session-check")
 
-        if (res.data.sucess) {
-            setUserId(res.data.userId)
+
+        if (res.data.success) {
+            // setUserId(res.data.userId)
+            dispatch({
+                type: "USER_AUTH",
+                payload: res.data.userId
+    
+               })
         } 
     }
 
@@ -60,23 +83,22 @@ export default function Welcome() {
     return (
         <>
         <h1>Welcome to Dynamic Scheduler</h1>
-        {!userId && 
+        <p>Login Below</p>
+        {!userId && (
 
-        <form onSubmit={handleLogin} id="key">
-            <input id="email" type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
-            <input id="password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-            <input type="submit" />
-        </form>
+            <form onSubmit={handleLogin} id="key">
+                <input id="email" type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
+                <input id="password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                <input type="submit" />
+            </form>
+        )
         }
-        {userId &&
-            <h3>Welcome, user # {userId}</h3>
-        }
-        <nav>
-            
-            <button> Login </button>
-
-            <button> Register</button>
-        </nav>
+        {userId && 
+        navigate('/navbar')
+      }
+       
+       <NavLink to="/register">Register</NavLink>
+       
         </>
     )
 }

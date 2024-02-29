@@ -1,12 +1,10 @@
+import React from 'react'
 
-
-function CreateStation(isEditing, value, onValueChange) {
-  return isEditing ? (
-    <td>
-        <input type="text" value={value} onChange={(event) => onValueChange(event.target.value)} />
-    </td>
-  ) : (
-    <td>{value}</td>
+function CreateStation() {
+  return (
+    <div>
+      
+    </div>
   )
 }
 

@@ -30,6 +30,7 @@ import { handlerFunctions } from "./controller.js";
 app.get('/api/session-check', handlerFunctions.sessionCheck);
 app.post("/api/login", handlerFunctions.login);
 app.get("/api/logout", handlerFunctions.logout);
+app.post("/api/register", handlerFunctions.register);
 
 //run the server
 

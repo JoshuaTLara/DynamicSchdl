@@ -9,6 +9,7 @@ import CreateNewStation from './pages/CreateNewStation.jsx'
 import GenerateSchedule from './pages/GenerateSchedule.jsx'
 import PastSchedules from './pages/PastSchedules.jsx'
 import './App.css'
+import Register from './pages/Register.jsx'
 
 
 
@@ -19,18 +20,20 @@ import NavBar from './componets/NaveBar.jsx'
 
 
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
 <>
-    <Route path="/" element={<NavBar />}>
+    <Route index element={<Welcome />} />
+    <Route path="/navbar" element={<NavBar />}>
       <Route path="Home" element={<Home />} />
       <Route path="PastSchedules" element={<PastSchedules />} />
       <Route path="CreateNewStation" element={<CreateNewStation />} />
       <Route path="AddEmployees" element={<AddEmployees />} />
       <Route path="GenerateSchedule" element={<GenerateSchedule />} />
-      {/* <Route path="Welcome" element={<Welcome />} /> */}
     </Route>
-    <Route path='/Welcome' element={<Welcome />} ></Route>
+    <Route path="/register" element={<Register />} />
+
 </>
   )
 )
