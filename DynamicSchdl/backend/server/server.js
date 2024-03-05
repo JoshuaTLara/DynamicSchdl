@@ -31,6 +31,11 @@ app.get('/api/session-check', handlerFunctions.sessionCheck);
 app.post("/api/login", handlerFunctions.login);
 app.get("/api/logout", handlerFunctions.logout);
 app.post("/api/register", handlerFunctions.register);
+app.get("/api/stations", handlerFunctions.getStations);
+app.post("/api/addStation", handlerFunctions.addStation);
+app.delete("/api/station/delete/:stationId", handlerFunctions.deleteStation);
+app.put("/station/update/:stationId", handlerFunctions.updateStation);
+
 
 //run the server
 

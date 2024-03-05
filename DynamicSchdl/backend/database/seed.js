@@ -3,10 +3,8 @@ import { db, Employee, Station, User, EmployeeAvailability, Shift } from "./mode
 await db.sync({ force: true })
 
 let mockupUserData = [
-    {email: 'David@gmail.com', password: 'test'},
     {email: 'Joshua@gmail.com', password: 'test'},
-    {email: 'Jackson@gmail.com', password: 'test'},
-    {email: 'Jacob@gmail.com', password: 'test'},
+
 ]
 
 let mockupEmployeeData = [

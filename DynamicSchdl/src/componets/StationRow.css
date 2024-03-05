@@ -1,7 +1,0 @@
-.StationRow {
-    height: 100vh; /* 100% of the viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }

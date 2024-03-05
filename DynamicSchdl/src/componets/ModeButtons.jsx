@@ -1,9 +1,9 @@
 
-        
-function ModeButtons({isEditing, saveClick, editClick, deleteFunc}) {
-    // props is an object with k/v pairs
-    /// {isEditing: false}
 
+function ModeButtons({isEditing, saveClick, editClick, deleteFunc}) {
+
+
+  
   return isEditing ? (
     <td>
         <button onClick={saveClick}>Save</button>
