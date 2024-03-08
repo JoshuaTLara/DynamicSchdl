@@ -114,13 +114,13 @@ EmployeeAvailability.init(
                 max: 7
             }
         },
-        isAvalible:{
+        isAvailable:{
             type: DataTypes.BOOLEAN,
             allowNull: false,
         }
     },
     {
-        modelName: 'employeeavailability',
+        modelName: 'employeeAvailability',
         sequelize: db,
     },
 );

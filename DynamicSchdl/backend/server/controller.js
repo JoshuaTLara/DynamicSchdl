@@ -1,4 +1,4 @@
-import {User, Station, Employee} from '../database/model.js'
+import {User, Station, Employee, EmployeeAvailability} from '../database/model.js'
 
 
 
@@ -213,6 +213,142 @@ export const handlerFunctions = {
         }
       },
 
+      getEmployees: async (req, res) => {
+        try {
+            // Query the database to get all stations
+            const employees = await Employee.findAll({
+                attributes: ['employeeId', 'fname', 'lname']
+            });
+    
+            if (employees.length > 0) {
+                // If stations are found, send the station data back to the front end
+                const formattedEmployees = employees.map(employee => ({
+                    employeeId: employee.employeeId,
+                    fname: employee.fname,
+                    lname: employee.lname
+                }));
+                res.status(200).json({ success: true, employees: formattedEmployees });
+            } else {
+                // If no stations are found, still return true and allow input on the front end
+                res.status(200).json({ success: true, employees: [] });
+            }
+        } catch (error) {
+            // Handle any errors that occur during the database query
+            console.error('Error fetching employees:', error);
+            res.status(500).json({ success: false, error: 'Internal Server Error' });
+        }
+    },
+    addEmployee: async(req, res) => {
+        try {
+          // Create a new employee
+          const newEmployee = await Employee.create({
+            fname: req.body.fname,
+            lname: req.body.lname,
+          });
       
+          // Send the newly created employee as a response
+          res.json({ employee: newEmployee });
+        } catch (error) {
+          console.error('Error adding employee:', error);
+          res.status(500).json({ error: 'Internal server error' });
+        }
+      },
+      deleteEmployee:async(req, res) => {
+        try {
+            const employeeId = req.params.employeeId;
+        
+            // Find the employee by ID
+            const employeeToDelete = await Employee.findByPk(employeeId);
+        
+            // Check if the employee exists
+            if (!employeeToDelete) {
+              return res.status(404).json({ error: 'Employee not found' });
+            }
+        
+            // Delete the employee
+            await employeeToDelete.destroy();
+        
+            res.json({ success: true, message: 'Employee deleted successfully' });
+          } catch (error) {
+            console.error('Error deleting employee:', error);
+            res.status(500).json({ error: 'Internal server error' });
+          }
+      },
+      updateEmployee: async (req, res) => {
+        try {
+            const employeeId = req.params.employeeId;
+    
+            // Find the employee by ID
+            const employeeToUpdate = await Employee.findByPk(employeeId);
+    
+            // Check if the employee exists
+            if (!employeeToUpdate) {
+                return res.status(404).json({ error: 'Employee not found' });
+            }
+    
+            // Update the employee's basic information
+            await employeeToUpdate.update({
+                fname: req.body.fname,
+                lname: req.body.lname,
+            });
+    
+            // Now, update the employee's availability
+            const availability = req.body.availability;
+            if (availability) {
+                // Delete existing availability records for the employee
+                await EmployeeAvailability.destroy({
+                    where: { employeeId },
+                });
+                
+                // Create new availability records based on the received data
+                const availabilityRecords = Object.entries(availability).map(([day, isAvailable]) => ({
+                    employeeId,
+                    dayOfTheWeek: day, // Assuming day is already a number
+                    isAvailable,
+                }));
+
+                await EmployeeAvailability.bulkCreate(availabilityRecords);
+            }
+    
+            res.json({ employee: employeeToUpdate });
+        } catch (error) {
+            console.error('Error updating employee:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    },
+    getEmployeeAvailability: async (req, res) => {
+        try {
+            const employees = await Employee.findAll({
+              include: [
+                {
+                  model: EmployeeAvailability,
+                },
+              ],
+            });
+        
+            const employeesWithAvailableDays = employees.map(employee => {
+              // Extracting available days from availability records where isAvailable is true
+              const availableDays = [];
+              employee.employeeAvailabilities.forEach(avail => {
+                if (avail.isAvailable) {
+                  availableDays.push(avail.dayOfTheWeek);
+                }
+              });
+        
+              // Creating a new object with employee details and available days
+              return {
+                employeeId: employee.employeeId,
+                fname: employee.fname,
+                lname: employee.lname,
+                availableDays: availableDays,
+              };
+            });
+        
+            res.json({ employeeAvailability: employeesWithAvailableDays });
+          } catch (error) {
+            console.error('Error fetching employee availability:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+          }
+        },
     
 }

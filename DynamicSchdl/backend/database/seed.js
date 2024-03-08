@@ -24,16 +24,16 @@ let mockupStationData = [
     { stationName: 'Anerobs' },
 ]
 
-let mockupEmployeeAvailabilityData = [
-    { dayOftheWeek: 1, isAvalible:true },
-    { dayOftheWeek: 2, isAvalible:true },
-    { dayOftheWeek: 3, isAvalible:true },
-    { dayOftheWeek: 4, isAvalible:true },
-    { dayOftheWeek: 5, isAvalible:true },
-    { dayOftheWeek: 6, isAvalible:true },
-    { dayOftheWeek: 7, isAvalible:true },
+// let mockupEmployeeAvailabilityData = [
+//     { dayOftheWeek: 1, isAvalible:true },
+//     { dayOftheWeek: 2, isAvalible:true },
+//     { dayOftheWeek: 3, isAvalible:true },
+//     { dayOftheWeek: 4, isAvalible:true },
+//     { dayOftheWeek: 5, isAvalible:true },
+//     { dayOftheWeek: 6, isAvalible:true },
+//     { dayOftheWeek: 7, isAvalible:true },
 
-]
+// ]
 
 async function seedData(dataArray, Model) {
     try {
@@ -48,7 +48,7 @@ async function seedData(dataArray, Model) {
 
 await seedData(mockupEmployeeData, Employee);
 await seedData(mockupStationData, Station);
-await seedData(mockupEmployeeAvailabilityData, EmployeeAvailability);
+// await seedData(mockupEmployeeAvailabilityData, EmployeeAvailability);
 await seedData(mockupUserData, User);
 
 await db.close()

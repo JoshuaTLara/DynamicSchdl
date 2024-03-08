@@ -4,7 +4,7 @@ import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } 
 
 import Home from './pages/Home.jsx'
 import Welcome from './pages/Welcome.jsx'
-import AddEmployees from './pages/AddEmployees.jsx'
+import CreateNewEmployee from './pages/CreateNewEmployee.jsx'
 import CreateNewStation from './pages/CreateNewStation.jsx'
 import GenerateSchedule from './pages/GenerateSchedule.jsx'
 import PastSchedules from './pages/PastSchedules.jsx'
@@ -29,7 +29,7 @@ const router = createBrowserRouter(
       <Route path="Home" element={<Home />} />
       <Route path="PastSchedules" element={<PastSchedules />} />
       <Route path="CreateNewStation" element={<CreateNewStation />} />
-      <Route path="AddEmployees" element={<AddEmployees />} />
+      <Route path="CreateNewEmployee" element={<CreateNewEmployee />} />
       <Route path="GenerateSchedule" element={<GenerateSchedule />} />
     </Route>
     <Route path="/register" element={<Register />} />

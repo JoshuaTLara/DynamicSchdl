@@ -14,7 +14,7 @@ function NavBar() {
           <Navbar.Brand href="#"><NavLink to="Home">Home</NavLink></Navbar.Brand>
           <Navbar.Brand href="#"><NavLink to="PastSchedules">Past Schedules</NavLink></Navbar.Brand>
           <Navbar.Brand href="#"><NavLink to="CreateNewStation">Create New Station</NavLink></Navbar.Brand>
-          <Navbar.Brand href="#"><NavLink to="AddEmployees">Add Employees</NavLink></Navbar.Brand>
+          <Navbar.Brand href="#"><NavLink to="CreateNewEmployee">Create New Employees</NavLink></Navbar.Brand>
           <Navbar.Brand href="#"><NavLink to="GenerateSchedule">Generate Schedule</NavLink></Navbar.Brand>
           <LogoutButton />
         </Container>

@@ -35,7 +35,11 @@ app.get("/api/stations", handlerFunctions.getStations);
 app.post("/api/addStation", handlerFunctions.addStation);
 app.delete("/api/station/delete/:stationId", handlerFunctions.deleteStation);
 app.put("/station/update/:stationId", handlerFunctions.updateStation);
-
+app.get("/api/employees", handlerFunctions.getEmployees);
+app.post("/api/addEmployee", handlerFunctions.addEmployee);
+app.delete("/api/employee/delete/:employeeId", handlerFunctions.deleteEmployee);
+app.put("/api/employee/update/:employeeId", handlerFunctions.updateEmployee);
+app.get("/api/employee-availability", handlerFunctions.getEmployeeAvailability);
 
 //run the server
 
