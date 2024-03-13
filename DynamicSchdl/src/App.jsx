@@ -8,7 +8,6 @@ import CreateNewEmployee from './pages/CreateNewEmployee.jsx'
 import CreateNewStation from './pages/CreateNewStation.jsx'
 import GenerateSchedule from './pages/GenerateSchedule.jsx'
 import PastSchedules from './pages/PastSchedules.jsx'
-import './App.css'
 import Register from './pages/Register.jsx'
 
 

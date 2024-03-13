@@ -4,8 +4,8 @@ function AddButton({addRow}) {
   return (
     <tr>
     <td></td>
-    <td colSpan={4}>
-        <button onClick={addRow} >Add Another</button>
+    <td style={{textAlign: 'center'}} >
+        <button className="Button" onClick={addRow} >Add Another</button>
     </td>
 </tr>
   )

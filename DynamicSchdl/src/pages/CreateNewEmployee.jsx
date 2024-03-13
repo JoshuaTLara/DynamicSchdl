@@ -20,7 +20,7 @@ function CreateNewEmployee() {
         return (
             <EmployeeRow
             key={employeeId}
-            initialIsEditing={false}
+            initialIsEditing={true}
             initialData={{ employeeId, fname, lname }}
             deleteFunc={() => deleteRow(employeeId)}
             />
@@ -29,8 +29,8 @@ function CreateNewEmployee() {
 
     const addRow = async () => {
         const response = await axios.post('/api/addEmployee', {
-            fname: "First Name Here",
-            lname: "Last Name Here"
+            fname: "First Name",
+            lname: "Last Name"
         })
     
         
@@ -56,10 +56,12 @@ function CreateNewEmployee() {
     }
 
   return (
-    <> <div>
+    <> <div className="EmployeePage">
     <table>
         <thead>
-            Employee Name, Avaliblity, Station Qualification
+            <th></th>
+            <th colSpan={2} style={{textAlign: 'center'}}>Employee Name</th>
+            
         </thead>
         <tbody>
              {rows}

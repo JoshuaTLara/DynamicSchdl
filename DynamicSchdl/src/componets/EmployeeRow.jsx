@@ -11,13 +11,7 @@ function EmployeeRow({initialData, deleteFunc, initialIsEditing,}) {
   const [fname, setFname] = useState(initialData.fname)
   const [lname, setLname] = useState(initialData.lname)
   const [availability, setAvailability] = useState({
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
+    1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false,
   });
 
   const makeEditMode = () => setEditMode(true)
@@ -41,29 +35,40 @@ function EmployeeRow({initialData, deleteFunc, initialIsEditing,}) {
 
   
   return (
+    <>
   <tr>
+    <td >
     <ModeButtons
     isEditing={editMode} 
     saveClick={makeNormalMode}
     editClick={makeEditMode}
     deleteFunc={deleteFunc}
     />
+    </td>
+    {/* <td style={{ textAlign: "center"}}> */}
     <EmployeeNameCell 
     isEditing={editMode} 
     value={fname} 
     onValueChange={setFname}
     />
+    {/* </td> */}
+    {/* <td> */}
     <EmployeeNameCell 
     isEditing={editMode} 
     value={lname} 
     onValueChange={setLname}
     />
+    {/* </td> */}
+  </tr>
+  <tr> 
+    {/* <td colSpan='3'> */}
      <Availability
      isEditing={editMode} 
      availability={availability} 
      onAvailabilityChange={setAvailability} />
-
+    {/* </td> */}
   </tr>
+     </>
   )
 }
 

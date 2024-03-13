@@ -82,23 +82,35 @@ export default function Welcome() {
 
     return (
         <>
-        <h1>Welcome to Dynamic Scheduler</h1>
-        <p>Login Below</p>
-        {!userId && (
 
+        <div class="WelcomeTitle">
+            <h1>Dynamic Scheduler</h1>
+        </div>
+        <div class="Welcome">
+
+        {!userId && (
+            
             <form onSubmit={handleLogin} id="key">
-                <input id="email" type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
-                <input id="password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-                <input type="submit" />
+                <div>
+                    <input id="email" type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
+                </div>
+                <div>
+                    <input id="password" type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                </div>
+                <div >
+                    <input class='Login' type="submit" value="Login" />
+                </div>
             </form>
         )
-        }
+    }
         {userId && 
-        navigate('/navbar')
-      }
+        navigate('/navbar/Home')
+    }
+
+
+       <div>Don't have an account?<NavLink class="registerlink" to="/register">Register</NavLink></div>
        
-       <NavLink to="/register">Register</NavLink>
-       
+       </div>
         </>
     )
 }

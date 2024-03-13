@@ -1,10 +1,12 @@
 
 
-function EmployeeNameCell({value, onValueChange}) {
-  return (
-    <td>
-        <input type="text" placeholder="Name Here" value={value} onChange={(event) => onValueChange(event.target.value)} />
+function EmployeeNameCell({isEditing, value, onValueChange}) {
+  return isEditing ? (
+    <td style={{textAlign: 'center' }} >
+        <input id="EmployeeNameCell" type="text" placeholder="Name Here" value={value} onChange={(event) => onValueChange(event.target.value)} />
     </td>
+     ) : (
+      <td style={{textAlign: 'center' }} >{value}</td>
   )
 }
 

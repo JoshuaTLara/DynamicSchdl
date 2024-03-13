@@ -26,7 +26,7 @@ const Register = () => {
 
       if (res.data.success) {
         setMessage(res.data.message);
-        navigate('/navbar');
+        navigate('/navbar/Home');
       } else {
         setMessage(res.data.message);
       }
@@ -37,23 +37,34 @@ const Register = () => {
   };
   return (
     <>
-    <h1>Register</h1>
+    <div className='Register'>
+
+    <h1 className='RegisterTitle'>Register</h1>
     {message && <p>{message}</p>}
     <form onSubmit={handleRegister}>
-      <input
+      <div>
+        <input
+        id="email"
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
+        />
+      </div>
+      <div>
+        <input
+        id="password"
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Register</button>
+        />
+      </div>
+      <div>
+        <button class='RegisterButton' type="submit">Register</button>
+      </div>
     </form>
+    </div>
   </>
   )
 }

@@ -19,7 +19,7 @@ const rows = currentData.map((stationData) => {
     return (
         <StationRow
         key={stationId}
-        initialIsEditing={false}
+        initialIsEditing={true}
         initialData={{ stationId, stationName }}
         deleteFunc={() => deleteRow(stationId)}
         />
@@ -60,7 +60,11 @@ axios.delete(`/api/station/delete/${stationId}`)
     <div>
         <table>
             <thead>
+                <th></th>
+                <th style={{textAlign: 'center' }}>
                 Station Name
+                </th>
+                    
             </thead>
             <tbody>
                  {rows}

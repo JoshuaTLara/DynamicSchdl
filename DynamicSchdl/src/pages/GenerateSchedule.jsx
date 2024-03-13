@@ -52,7 +52,7 @@ export default function GenerateSchedule() {
 
     return (
         <>
-        <h2>Schedule</h2>
+        <h1 className="ScheduleTitle">Schedule</h1>
 
         <table style={{ borderCollapse: 'collapse', width: '100%' }}>
           <thead>
