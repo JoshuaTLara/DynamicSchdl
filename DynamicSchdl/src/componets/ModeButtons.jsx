@@ -5,7 +5,7 @@ function ModeButtons({isEditing, saveClick, editClick, deleteFunc}) {
 
   
   return isEditing ? (
-    <td >
+    <td>
         <button className="Button" onClick={saveClick}>Save</button>
     </td>
   ) : (

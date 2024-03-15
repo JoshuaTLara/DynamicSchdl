@@ -20,7 +20,7 @@ function CreateNewEmployee() {
         return (
             <EmployeeRow
             key={employeeId}
-            initialIsEditing={true}
+            initialIsEditing={false}
             initialData={{ employeeId, fname, lname }}
             deleteFunc={() => deleteRow(employeeId)}
             />
@@ -59,8 +59,8 @@ function CreateNewEmployee() {
     <> <div className="EmployeePage">
     <table>
         <thead>
-            <th></th>
-            <th colSpan={2} style={{textAlign: 'center'}}>Employee Name</th>
+            
+            <th colSpan={3} id="Employeeth">Employee Name</th>
             
         </thead>
         <tbody>

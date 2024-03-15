@@ -19,7 +19,7 @@ const rows = currentData.map((stationData) => {
     return (
         <StationRow
         key={stationId}
-        initialIsEditing={true}
+        initialIsEditing={false}
         initialData={{ stationId, stationName }}
         deleteFunc={() => deleteRow(stationId)}
         />

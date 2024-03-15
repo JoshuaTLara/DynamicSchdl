@@ -1,4 +1,33 @@
+* {
+  font-family: "Comfortaa", sans-serif;
+}
 
+
+#ScheduleTable {
+  border-collapse:separate;
+  width: 100%;
+  border-radius: 10px;
+  
+}
+#ScheduleCellsDays{
+  background-color: #1B4965;
+  color: white;
+  border-radius: 6px;
+}
+/* #ScheduleRows {
+  border: 1px solid black;
+} */
+#ScheduleCellsStation {
+ font-weight: 600;
+  background-color: #5FA8D3;
+  color: white;
+  border-radius: 6px;
+}
+#ScheduleCells {
+  background-color: #CAE9FF;
+  text-align: center;
+  border-radius: 6px;
+}
 
 .Button {
   margin: 10px; /* Add margin for spacing */
@@ -9,6 +38,11 @@
   color: white; /* Set text color */
   cursor: pointer; /* Change cursor on hover */
 }
+
+.Button:hover {
+  background-color: #BEE9E8;
+}
+
 .Welcome {
   text-align: center;
   padding: 20px;
@@ -20,9 +54,14 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #CAE9FF;
-  
+  background-color: #1B4965;
+  background-image: url(./assets/Background.img.webp);
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: center;
+
 }
+
 #email {
   border: none; /* Remove the default border */
   border-bottom: 1px solid #000; /* Add a bottom border */
@@ -89,7 +128,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%; /* Full width */
-  padding: 10px;
+ 
 }
 
 .NavBar a {
@@ -98,14 +137,13 @@ body {
   font-size: 16px;
   margin: 0 10px; /* Add space between nav links for smaller screens */
   font-weight: bold;
+  
 }
 
 .NavBar a:hover {
   color: #CAE9FF;
-  border: 1px solid #000;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #1B4965;
-  padding: 5px 10px;
 }
 
 /* Responsive adjustments */
@@ -147,10 +185,12 @@ padding: 15px; /* Increase padding to add more space around the text */
 }
 .EmployeePage {
   margin-top: 20px;
-  height: 700px;
+  height: 85vh;
 }
 #EmployeeNameCell {
   width: 85px;
+  text-align: center;
+  font-weight: bold;
 }
 #NameCell {
   width: 100px;
@@ -158,8 +198,16 @@ padding: 15px; /* Increase padding to add more space around the text */
 .CellAvailability {
   text-align: center;
   font-weight: bold;
+  
 }
 .ScheduleTitle {
   text-align: center;
   padding-bottom: 50px;
+  
 }
+#Employeeth {
+  text-align: center;
+  font-weight: 800;
+
+}
+

@@ -13,14 +13,20 @@ let mockupEmployeeData = [
     { fname: 'Jingle', lname: 'Bells' },
     { fname: 'Himmer', lname: 'Beast' },
     { fname: 'Schmidt', lname: 'Winston' },
+    { fname: 'Jesse', lname: 'DevM'},
+    { fname: 'Michael', lname: 'DevM'},
+    { fname: 'Lincoln', lname: 'DevM'},
+    { fname: 'Ty', lname: 'DevM'},
+    { fname: 'Cat', lname: 'DevM'},
+    { fname: 'David', lname: 'DevM'},
 ]
 
 let mockupStationData = [
-    { stationName: 'Blood Bench' },
+    { stationName: 'Bloods' },
     { stationName: 'Blood Plates' },
-    { stationName: 'Kistra' },
+    { stationName: 'Keistra' },
     { stationName: 'Offlines' },
-    { stationName: 'AFB Cultures' },
+    { stationName: 'AFB' },
     { stationName: 'Anerobs' },
 ]
 

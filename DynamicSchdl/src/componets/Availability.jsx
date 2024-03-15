@@ -22,7 +22,7 @@ const getDayName = (day) => {
       <td className="CellAvailability">Availability:</td>
       <td colSpan={2}>
         {isEditing ? (
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', margin: '10px', gap:'10px' }}>
             {daysOfWeek.map((day) => (
               <div key={day}>
                 <input
@@ -35,7 +35,7 @@ const getDayName = (day) => {
             ))}
           </div>
         ) : (
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', margin: '10px', gap:'10px' }}>
             {daysOfWeek.map((day) => (
               <div key={day}>{getDayName(day)}</div>
               ))}

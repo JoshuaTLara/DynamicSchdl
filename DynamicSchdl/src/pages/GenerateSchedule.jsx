@@ -36,15 +36,15 @@ export default function GenerateSchedule() {
 
     const scheduleRows = currentData.map((station, idx) => {
         return (
-          <tr key={idx}>
-            <td style={{ border: '1px solid black' }} >{station.stationName}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay1[idx] ? employeesOnDay1[idx].fname : ''}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay2[idx] ? employeesOnDay2[idx].fname : ''}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay3[idx] ? employeesOnDay3[idx].fname : ''}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay4[idx] ? employeesOnDay4[idx].fname : ''}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay5[idx] ? employeesOnDay5[idx].fname : ''}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay6[idx] ? employeesOnDay6[idx].fname : ''}</td>
-            <td style={{ border: '1px solid black' }}>{employeesOnDay7[idx] ? employeesOnDay7[idx].fname : ''}</td>
+          <tr id="ScheduleRows" key={idx}>
+            <td id="ScheduleCellsStation">{station.stationName}</td>
+            <td id="ScheduleCells">{employeesOnDay1[idx] ? employeesOnDay1[idx].fname : ''}</td>
+            <td id="ScheduleCells">{employeesOnDay2[idx] ? employeesOnDay2[idx].fname : ''}</td>
+            <td id="ScheduleCells">{employeesOnDay3[idx] ? employeesOnDay3[idx].fname : ''}</td>
+            <td id="ScheduleCells">{employeesOnDay4[idx] ? employeesOnDay4[idx].fname : ''}</td>
+            <td id="ScheduleCells">{employeesOnDay5[idx] ? employeesOnDay5[idx].fname : ''}</td>
+            <td id="ScheduleCells">{employeesOnDay6[idx] ? employeesOnDay6[idx].fname : ''}</td>
+            <td id="ScheduleCells">{employeesOnDay7[idx] ? employeesOnDay7[idx].fname : ''}</td>
           </tr>
         );
       });
@@ -54,17 +54,17 @@ export default function GenerateSchedule() {
         <>
         <h1 className="ScheduleTitle">Schedule</h1>
 
-        <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+        <table id="ScheduleTable">
           <thead>
-            <tr>
-              <th style={{ border: '1px solid black' }}>Station Names</th> 
-              <th style={{ border: '1px solid black' }}>Sunday</th>
-              <th style={{ border: '1px solid black' }}>Monday</th>
-              <th style={{ border: '1px solid black' }}>Tuesday</th>
-              <th style={{ border: '1px solid black' }}>Wednesday</th>
-              <th style={{ border: '1px solid black' }}>Thursday</th>
-              <th style={{ border: '1px solid black' }}>Friday</th>
-              <th style={{ border: '1px solid black' }}>Saturday</th>
+            <tr id="ScheduleRows">
+              <th id="ScheduleCellsDays">Station Names</th> 
+              <th id="ScheduleCellsDays">Sunday</th>
+              <th id="ScheduleCellsDays">Monday</th>
+              <th id="ScheduleCellsDays">Tuesday</th>
+              <th id="ScheduleCellsDays">Wednesday</th>
+              <th id="ScheduleCellsDays">Thursday</th>
+              <th id="ScheduleCellsDays">Friday</th>
+              <th id="ScheduleCellsDays">Saturday</th>
             </tr>
           </thead>
           <tbody>
